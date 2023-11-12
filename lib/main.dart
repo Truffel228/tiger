@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
       return;
     }
 
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 2));
 
     onb = widget.db.getBool('onb') ?? false;
     setState(() {
