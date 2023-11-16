@@ -16,7 +16,11 @@ class _BonusScreenState extends State<BonusScreen> {
   @override
   void initState() {
     super.initState();
-    _bd = context.read<SharedPreferences>();
+    _init();
+  }
+
+  void _init() async {
+    _bd = await SharedPreferences.getInstance();
 
     final cachedTime = _bd.getString('lastGift') ?? '';
 
@@ -25,7 +29,9 @@ class _BonusScreenState extends State<BonusScreen> {
     if (DateTime.now().difference(dateTime).inSeconds < 60 * 60 * 24) {
       final nextGift = dateTime.add(Duration(days: 1));
 
-      timeLeft = nextGift.difference(DateTime.now());
+      setState(() {
+        timeLeft = nextGift.difference(DateTime.now());
+      });
     }
   }
 

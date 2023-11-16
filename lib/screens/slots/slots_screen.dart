@@ -73,8 +73,8 @@ class _SlotsScreenState extends State<SlotsScreen> {
     });
   }
 
-  void _init() {
-    _bd = context.read<SharedPreferences>();
+  void _init() async{
+    _bd = await SharedPreferences.getInstance();
     setState(() {
       _gems = _bd.getInt('gems') ?? 0;
     });

@@ -8,14 +8,12 @@ import 'package:tiger/screens/wheel/wheel_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final db = await SharedPreferences.getInstance();
-  runApp(MyApp(db: db));
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key, required this.db});
-  final SharedPreferences db;
+  const MyApp({super.key});
+
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -28,15 +26,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Provider.value(
-      value: widget.db,
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFF620000),
-        ),
-        home: OnBoardingScreen(),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFF620000),
       ),
+      home: OnBoardingScreen(),
     );
   }
 }
@@ -64,7 +59,7 @@ class OnBoardingScreen extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: () async {
-              final db = context.read<SharedPreferences>();
+              final db = await SharedPreferences.getInstance();
               await db.setBool('onb', true);
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
