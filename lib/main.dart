@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:tiger/screens/bonus/bonus_screen.dart';
@@ -13,7 +12,6 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
-
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -233,5 +231,3 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 }
-
-

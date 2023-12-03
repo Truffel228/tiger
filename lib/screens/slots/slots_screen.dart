@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiger/widgets/roll_slot/roll_slot.dart';
 import 'package:tiger/widgets/roll_slot/roll_slot_controller.dart';
@@ -73,7 +72,7 @@ class _SlotsScreenState extends State<SlotsScreen> {
     });
   }
 
-  void _init() async{
+  void _init() async {
     _bd = await SharedPreferences.getInstance();
     setState(() {
       _gems = _bd.getInt('gems') ?? 0;
@@ -108,7 +107,7 @@ class _SlotsScreenState extends State<SlotsScreen> {
                   top: 16,
                   right: 16,
                   child: GestureDetector(
-                    onTap: () => _spin ? null: Navigator.of(context).pop(),
+                    onTap: () => _spin ? null : Navigator.of(context).pop(),
                     child: Image.asset(
                       'assets/close.png',
                       width: 24,
