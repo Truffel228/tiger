@@ -402,13 +402,17 @@ class BoardView extends StatefulWidget {
 }
 
 class _BoardViewState extends State<BoardView> {
-  Size get size => Size(MediaQuery.of(context).size.width * 0.8,
-      MediaQuery.of(context).size.width * 0.8);
+  Size get size => MediaQuery.of(context).size.width >= 500
+      ? Size(MediaQuery.of(context).size.width * 0.5,
+          MediaQuery.of(context).size.width * 0.5)
+      : Size(MediaQuery.of(context).size.width * 0.8,
+          MediaQuery.of(context).size.width * 0.8);
 
   double _rotote(int index) => (index / widget.items.length) * 2 * pi;
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.width);
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
